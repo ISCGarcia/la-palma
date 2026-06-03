@@ -1,28 +1,37 @@
 FROM php:8.2-apache
 
-# Actualizar el sistema e instalar herramientas necesarias (como unzip y git que Composer usa mucho)
+# Instalar herramientas y extensiones necesarias para Laravel
 RUN apt-get update && apt-get install -y \
     unzip \
     git \
     libzip-dev \
-    && docker-php-ext-install zip pdo pdo_mysql
+    libpng-dev \
+    && docker-php-ext-install zip pdo pdo_mysql gd
 
-# Instalar Composer de forma oficial
+# Habilitar el módulo de reescritura de Apache (Crucial para las rutas de Laravel)
+RUN a2enmod rewrite
+
+# Instalar Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Copiar los archivos de tu proyecto al servidor
+# Copiar todo el proyecto al servidor
 COPY . /var/www/html/
 
-# Asegurar permisos correctos para que Apache y Composer puedan trabajar
-RUN chown -R www-data:www-data /var/www/html
+# Configurar Apache para que apunte a la carpeta /public de Laravel (donde está el index.php)
+ENV APACHE_DOCUMENT_ROOT /var/www/html/public
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
-# Entrar a la carpeta y ejecutar Composer con banderas de compatibilidad
+# Dar permisos a las carpetas de almacenamiento de Laravel
+RUN chown -R www-data:www-data /var/www/html \
+    && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
+
+# Ejecutar Composer para instalar las dependencias de PHP
 WORKDIR /var/www/html
 RUN composer install --no-dev --optimize-autoloader --no-interaction --ignore-platform-reqs
 
 # Configurar el puerto dinámico para Render
 ENV PORT=80
 EXPOSE 80
-
 RUN sed -i 's/Listen 80/Listen ${PORT}/g' /etc/apache2/ports.conf
 RUN sed -i 's/<VirtualHost \*:80>/<VirtualHost *:${PORT}>/g' /etc/apache2/sites-available/000-default.conf
