@@ -1,19 +1,26 @@
 FROM php:8.2-apache
 
-# Instalar Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+# Actualizar el sistema e instalar herramientas necesarias (como unzip y git que Composer usa mucho)
+RUN apt-get update && apt-get install -y \
+    unzip \
+    git \
+    libzip-dev \
+    && docker-php-ext-install zip pdo pdo_mysql
 
-# Instalar extensiones comunes de PHP si las necesitas (ej: pdo_mysql para bases de datos)
-RUN docker-php-ext-install pdo pdo_mysql
+# Instalar Composer de forma oficial
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Copiar los archivos de tu proyecto al servidor
 COPY . /var/www/html/
 
-# Entrar a la carpeta y ejecutar Composer
-WORKDIR /var/www/html
-RUN composer install --no-dev --optimize-autoloader
+# Asegurar permisos correctos para que Apache y Composer puedan trabajar
+RUN chown -R www-data:www-data /var/www/html
 
-# Configurar el puerto para Render
+# Entrar a la carpeta y ejecutar Composer con banderas de compatibilidad
+WORKDIR /var/www/html
+RUN composer install --no-dev --optimize-autoloader --no-interaction --ignore-platform-reqs
+
+# Configurar el puerto dinámico para Render
 ENV PORT=80
 EXPOSE 80
 
