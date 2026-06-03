@@ -36,3 +36,4 @@ EXPOSE 80
 RUN sed -i 's/Listen 80/Listen ${PORT}/g' /etc/apache2/ports.conf
 RUN sed -i 's/<VirtualHost \*:80>/<VirtualHost *:${PORT}>/g' /etc/apache2/sites-available/000-default.conf
 ENV APP_KEY="base64:o9vr26l6/aFEOBCDMNU8QK228lhp273oSoYsvo7OFFY="
+ENV APP_DEBUG=true
