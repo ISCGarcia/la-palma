@@ -18,15 +18,15 @@
 
 <body class="bg-[#f5f2ee] overflow-x-hidden text-slate-800">
 
-    <section class="h-[70vh] bg-cover bg-center relative" style="background-image: url('/images/Historia2.jpeg');">
-        <div class="absolute inset-0 bg-black/55"></div>
+    <section class="min-h-[65vh] md:h-[70vh] bg-cover bg-center relative flex flex-col justify-between" style="background-image: url('/images/Historia2.jpeg');">
+        <div class="absolute inset-0 bg-black/60"></div>
 
-        <nav class="absolute top-0 left-0 w-full z-50 px-6 py-6 flex justify-between items-center">
+        <nav class="relative w-full z-50 px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-4">
             <h1 class="text-white text-2xl md:text-3xl font-bold tracking-wide fuente-elegante">
                 La Palma
             </h1>
 
-            <div class="flex gap-6 md:gap-10 text-white text-sm md:text-base font-medium">
+            <div class="flex flex-wrap justify-center gap-4 md:gap-10 text-white text-sm md:text-base font-medium">
                 <a href="/" class="hover:text-orange-300 transition">Inicio</a>
                 <a href="/nosotros" class="hover:text-orange-300 transition">Nosotros</a>
                 <a href="/menu" class="text-orange-400 font-semibold drop-shadow-sm">Menú</a>
@@ -34,31 +34,30 @@
             </div>
         </nav>
 
-        <div class="relative z-10 flex flex-col justify-center items-center h-full text-center px-6">
-            <p class="tracking-[6px] text-orange-300 text-xs md:text-sm font-semibold mb-4">
+        <div class="relative z-10 flex flex-col justify-center items-center flex-grow text-center px-6 py-12">
+            <p class="tracking-[4px] md:tracking-[6px] text-orange-300 text-xs md:text-sm font-semibold mb-3">
                 RESTAURANTE LA PALMA
             </p>
-            <h1 class="text-white text-5xl md:text-8xl font-bold tracking-tight fuente-elegante">
+            <h2 class="text-white text-4xl md:text-8xl font-bold tracking-tight fuente-elegante">
                 Nuestro Menú
-            </h1>
-            <p class="text-stone-200 italic text-lg md:text-2xl mt-4 max-w-xl font-light">
+            </h2>
+            <p class="text-stone-200 italic text-base md:text-2xl mt-4 max-w-xl font-light">
                 Tradición, sabor y pasión desde 2004
             </p>
         </div>
     </section>
 
-    <section class="py-20 px-6 max-w-7xl mx-auto">
-        
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <section class="py-16 md:py-20 px-6 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
             <div class="bg-[#fdf5ee] border border-orange-100 rounded-3xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300">
                 <div class="relative h-52 overflow-hidden">
-                    <img src="/images/desayuno.jpg" class="w-full h-full object-cover transform hover:scale-105 transition duration-500">
+                    <img src="/images/desayuno.jpg" class="w-full h-full object-cover transform hover:scale-105 transition duration-500" alt="Desayunos">
                 </div>
                 <div class="p-8">
-                    <h2 class="text-2xl font-bold text-[#8a4214] mb-6 text-center fuente-elegante">
+                    <h3 class="text-2xl font-bold text-[#8a4214] mb-6 text-center fuente-elegante">
                         Desayunos
-                    </h2>
+                    </h3>
                     <ul class="space-y-3 text-base text-stone-600 divide-y divide-orange-200/40">
                         <li class="pt-2 text-center hover:text-orange-600 transition">Omelette</li>
                         <li class="pt-2 text-center hover:text-orange-600 transition">Chilaquiles</li>
@@ -73,12 +72,12 @@
 
             <div class="bg-[#fbf0e9] border border-orange-200/60 rounded-3xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300">
                 <div class="relative h-52 overflow-hidden">
-                    <img src="/images/carnes.jpeg" class="w-full h-full object-cover transform hover:scale-105 transition duration-500">
+                    <img src="/images/carnes.jpeg" class="w-full h-full object-cover transform hover:scale-105 transition duration-500" alt="Carnes">
                 </div>
                 <div class="p-8">
-                    <h2 class="text-2xl font-bold text-[#913d1b] mb-6 text-center fuente-elegante">
+                    <h3 class="text-2xl font-bold text-[#913d1b] mb-6 text-center fuente-elegante">
                         Carnes
-                    </h2>
+                    </h3>
                     <ul class="space-y-3 text-base text-stone-600 divide-y divide-orange-300/30">
                         <li class="pt-2 text-center hover:text-orange-700 transition">Fajitas de res</li>
                         <li class="pt-2 text-center hover:text-orange-700 transition">Tampiqueña</li>
@@ -92,12 +91,12 @@
 
             <div class="bg-[#fcf3ea] border border-orange-100 rounded-3xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300">
                 <div class="relative h-52 overflow-hidden">
-                    <img src="/images/mole.jpeg" class="w-full h-full object-cover transform hover:scale-105 transition duration-500">
+                    <img src="/images/mole.jpeg" class="w-full h-full object-cover transform hover:scale-105 transition duration-500" alt="Especialidades">
                 </div>
                 <div class="p-8">
-                    <h2 class="text-2xl font-bold text-[#8f4f18] mb-6 text-center fuente-elegante">
+                    <h3 class="text-2xl font-bold text-[#8f4f18] mb-6 text-center fuente-elegante">
                         Especialidades
-                    </h2>
+                    </h3>
                     <ul class="space-y-3 text-base text-stone-600 divide-y divide-orange-200/40">
                         <li class="pt-2 text-center hover:text-orange-600 transition">Molcajete Zacatecano</li>
                         <li class="pt-2 text-center hover:text-orange-600 transition">Fajitas mixtas</li>
@@ -111,12 +110,12 @@
 
             <div class="bg-[#fdf4ed] border border-orange-100 rounded-3xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300">
                 <div class="relative h-52 overflow-hidden">
-                    <img src="/images/mariscos.jpeg" class="w-full h-full object-cover transform hover:scale-105 transition duration-500">
+                    <img src="/images/mariscos.jpeg" class="w-full h-full object-cover transform hover:scale-105 transition duration-500" alt="Mariscos">
                 </div>
                 <div class="p-8">
-                    <h2 class="text-2xl font-bold text-[#944616] mb-6 text-center fuente-elegante">
+                    <h3 class="text-2xl font-bold text-[#944616] mb-6 text-center fuente-elegante">
                         Mariscos
-                    </h2>
+                    </h3>
                     <ul class="space-y-3 text-base text-stone-600 divide-y divide-orange-200/40">
                         <li class="pt-2 text-center hover:text-orange-600 transition">Camarones empanizados</li>
                         <li class="pt-2 text-center hover:text-orange-600 transition">Camarones a la diabla</li>
@@ -130,12 +129,12 @@
 
             <div class="bg-[#faf1e9] border border-orange-200/50 rounded-3xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300">
                 <div class="relative h-52 overflow-hidden">
-                    <img src="/images/mojarr.jpeg" class="w-full h-full object-cover transform hover:scale-105 transition duration-500">
+                    <img src="/images/mojarr.jpeg" class="w-full h-full object-cover transform hover:scale-105 transition duration-500" alt="Filetes y Pescados">
                 </div>
                 <div class="p-8">
-                    <h2 class="text-2xl font-bold text-[#8e3f1b] mb-6 text-center fuente-elegante">
+                    <h3 class="text-2xl font-bold text-[#8e3f1b] mb-6 text-center fuente-elegante">
                         Filetes y Pescados
-                    </h2>
+                    </h3>
                     <ul class="space-y-3 text-base text-stone-600 divide-y divide-orange-300/30">
                         <li class="pt-2 text-center hover:text-orange-700 transition">Filete empanizado</li>
                         <li class="pt-2 text-center hover:text-orange-700 transition">Filete a la diabla</li>
@@ -148,13 +147,12 @@
 
             <div class="bg-[#fdf6ee] border border-orange-100 rounded-3xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300">
                 <div class="relative h-52 overflow-hidden">
-                <img src="/images/antojo.jpeg" class="w-full h-full object-cover transform hover:scale-105 transition duration-500">
-
+                    <img src="/images/antojo.jpeg" class="w-full h-full object-cover transform hover:scale-105 transition duration-500" alt="Antojitos">
                 </div>
                 <div class="p-8">
-                    <h2 class="text-2xl font-bold text-[#8c4b11] mb-6 text-center fuente-elegante">
+                    <h3 class="text-2xl font-bold text-[#8c4b11] mb-6 text-center fuente-elegante">
                         Antojitos
-                    </h2>
+                    </h3>
                     <ul class="space-y-3 text-base text-stone-600 divide-y divide-orange-200/40">
                         <li class="pt-2 text-center hover:text-orange-600 transition">Tacos dorados</li>
                         <li class="pt-2 text-center hover:text-orange-600 transition">Enchiladas</li>
